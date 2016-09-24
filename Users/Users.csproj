@@ -187,6 +187,7 @@
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

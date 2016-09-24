@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Users.Infrastructure;
 using Users.Models;
 using System.Collections.Generic;
+using System.Web.Security;
 
 namespace Users.Controllers
 {

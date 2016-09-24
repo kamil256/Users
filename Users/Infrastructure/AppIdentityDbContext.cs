@@ -17,6 +17,8 @@ namespace Users.Infrastructure
         {
             return new AppIdentityDbContext();
         }
+
+        public DbSet<City> Cities { get; set; }
     }
 
     public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
@@ -41,7 +43,13 @@ namespace Users.Infrastructure
             AppUser user = userMgr.FindByName(userName);
             if (user == null)
             {
-                userMgr.Create(new AppUser { UserName = userName, Email = email }, password);
+                using (var ctx = new AppIdentityDbContext())
+                {
+                    City city = ctx.Cities.Add(new City { Name = "Krakow" });
+                    ctx.SaveChanges();
+                    userMgr.Create(new AppUser { UserName = userName, Email = email, City = city  }, password);
+                }
+                   
                 user = userMgr.FindByName(userName);
             }
              
